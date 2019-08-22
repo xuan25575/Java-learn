@@ -6,36 +6,33 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
- * @Description 自定义类加载器
+ * @Description 演示热部署
  * @date 2019/8/20
  */
-public class PathClassLoader extends ClassLoader {
+public class ClassReloader extends ClassLoader {
 
     private String classPath;
-    private  String packageName = "cn.ccu.reflect";
+    private  String classname = "cn.ccu.reflect.ServiceImpl";
 
-    public PathClassLoader(String classPath) {
+    public ClassReloader(String classPath) {
+        super();
         this.classPath = classPath;
     }
 
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        if(packageName.startsWith(name)){
-            byte[] classDate = getDate(name);
-            if(classDate==null){
-                throw new ClassNotFoundException();
-            }else {
-                return defineClass(name,classDate,0,classDate.length);
-            }
-        }else {
-            return super.findClass(name);
+        byte[] classDate = getDate(name);
+        if (classDate == null) {
+            throw new ClassNotFoundException();
+        } else {
+            return defineClass(classname, classDate, 0, classDate.length);
         }
+
     }
 
     private byte[] getDate(String className) {
-        String path =  classPath+ File.separatorChar +
-                className.replace('.',File.separatorChar)+".class";
+        String path = classPath+className;
         try {
             InputStream in = new FileInputStream(path);
             ByteArrayOutputStream out  = new ByteArrayOutputStream();
@@ -58,12 +55,13 @@ public class PathClassLoader extends ClassLoader {
 
        // System.out.println(packageName.startsWith("cn.ccu.reflect.ServiceImpl.class"));
         // 演示热部署
-        String path = "D:\\ideaspace\\Java-Patterns\\src";
-        PathClassLoader pathClassLoader1= new PathClassLoader(path);
-        Class<?> c1 = pathClassLoader1.findClass("cn.ccu.reflect.");
+        // 先编译一个Class文件
+        String path = "D:/ideaspace/Java-Patterns/src/cn/ccu/reflect/";
+        ClassReloader pathClassLoader1= new ClassReloader(path);
+        Class<?> c1 = pathClassLoader1.findClass("ServiceImpl.class");
         System.out.println(c1.newInstance());
-        PathClassLoader pathClassLoader2= new PathClassLoader(path);
-        Class<?> c2 = pathClassLoader1.findClass("cn.ccu.reflect");
+        ClassReloader pathClassLoader2= new ClassReloader(path);
+        Class<?> c2 = pathClassLoader2.findClass("ServiceImpl.class");
         System.out.println(c2.newInstance());
 
     }
