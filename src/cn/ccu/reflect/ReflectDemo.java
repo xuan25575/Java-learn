@@ -17,6 +17,13 @@ public class ReflectDemo {
     }
 
     public static void main(String[] args) {
-         reflect();
+//         reflect();
+
+        Class<?>[] interfaces = ReflectDemo.class.getInterfaces();
+        for (Class clazz: interfaces
+             ) {
+            System.out.println(clazz);
+        }
+
     }
 }

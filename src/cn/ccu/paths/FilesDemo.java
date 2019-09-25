@@ -27,10 +27,10 @@ public class FilesDemo {
           //注意创建目录和文件Files.createDirectories 和 Files.createFile不能混用，
          //  必须先有目录，才能在目录中创建文件。
         try {
-            Files.createDirectories(Paths.get("C://TEST"));
-            if(!Files.exists(Paths.get("C://TEST")))
-                Files.createFile(Paths.get("C://TEST/test.txt"));
-//            Files.createDirectories(Paths.get("C://TEST/test2.txt"));
+            Files.createDirectories(Paths.get("C://Test"));
+            if(!Files.exists(Paths.get("C://Test")))
+                Files.createFile(Paths.get("C://Test/test.txt"));
+//            Files.createDirectories(Paths.get("C://Test/test2.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
