@@ -1,6 +1,7 @@
 package cn.ccu.Test;
 
 import java.io.File;
+import java.util.Date;
 
 /**
  * @Description TODO
@@ -11,6 +12,12 @@ public class Math {
 
         File file = new File("D:\\data\\java 整理.pdf");
         System.out.println(file.getName());
+
+
+        String s= "a";
+        Date date = new Date();
+
+        System.out.println(s+"_"+date);
 
 
 
