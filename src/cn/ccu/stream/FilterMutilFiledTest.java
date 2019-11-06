@@ -20,7 +20,6 @@ public class FilterMutilFiledTest {
         list.add(new Person("Tem", 17, "America"));
 
 
-
         ArrayList<Person> collect = list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(
                 () -> new TreeSet<>(Comparator.comparing(o -> o.getName() + "#" + o.getAge() + "#" + o.getAddress()))),
                 ArrayList::new));

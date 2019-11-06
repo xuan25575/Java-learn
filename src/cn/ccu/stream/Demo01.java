@@ -45,5 +45,6 @@ public class Demo01 {
                         .collect(Collectors.toList());
 
         System.out.println(uniqueCharacters);
+
     }
 }
