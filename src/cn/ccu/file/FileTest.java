@@ -3,6 +3,7 @@ package cn.ccu.file;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.text.SimpleDateFormat;
 
 /**
  * 文件相关测试.
@@ -16,6 +17,9 @@ public class FileTest {
         new Thread(new GETLock(channel, 0, 2)).start();
         new Thread(new GETLock(channel, 1, 3)).start();
         //channel.close();
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     }
 
     private static class GETLock implements Runnable {

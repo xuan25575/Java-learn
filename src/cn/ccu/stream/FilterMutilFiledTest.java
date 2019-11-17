@@ -5,6 +5,9 @@ package cn.ccu.stream;
 import com.google.common.base.Splitter;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class FilterMutilFiledTest {
@@ -81,6 +84,26 @@ public class FilterMutilFiledTest {
 //        Map<String, Map<String, List<MilestonesValidTO>>> collect2 = list2.parallelStream()
 //                .collect(Collectors.groupingBy(MilestonesValidTO::getId,Collectors.groupingBy(MilestonesValidTO::getMessage)));
 
+
+
+        //使用map去重  stream 只能消费一次。
+        List<MilestonesValidTO> unique2 = list2.stream()
+                .filter(distinctByKey(o -> o.getId()))
+                .collect(Collectors.toList());
+        System.out.println(unique2);
+
+
+
         lst.forEach(m-> System.err.println(m.toString()));
     }
+
+
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        System.out.println("这个函数将应用到每一个item");
+        // putIfAbsent  如果指定的键尚未与值关联（或被映射为{@code null}），则将其与给定值关联并返回{@code null}，否则返回当前值。
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
 }
