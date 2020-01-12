@@ -1,9 +1,5 @@
 package cn.ccu.stream;
 
-
-
-import com.google.common.base.Splitter;
-
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -46,9 +42,9 @@ public class FilterMutilFiledTest {
         List<Person> countRecords = countMap.keySet().stream().map(key -> {
 
             // guava方式
-            List<String> strings = Splitter.on("_").splitToList(key);
-            String name1 = strings.get(0);
-            String address1 = strings.get(1);
+          //  List<String> strings = Splitter.on("_").splitToList(key);
+           // String name1 = strings.get(0);
+//            String address1 = strings.get(1);
 
             String[] temp = key.split("_");
             String name = temp[0];

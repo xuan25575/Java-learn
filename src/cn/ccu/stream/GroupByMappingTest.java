@@ -1,7 +1,5 @@
 package cn.ccu.stream;
 
-import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +8,7 @@ import java.util.stream.Collectors;
 public class GroupByMappingTest {
 
     public static void main(String[] args) {
-        List<Person> list = Lists.newArrayList();
+        List<Person> list =  new ArrayList<>();
         list.add(new Person("Tam", 16, "China"));
         list.add(new Person("Tam", 16, "China"));
         list.add(new Person("Tom", 15, "Japan"));

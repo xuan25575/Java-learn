@@ -10,7 +10,7 @@ import java.util.Observer;
 public class Observer1 implements Observer {
 
     private Subject subject; //主题
-    private Object obejct;
+
 
     public Observer1(Subject subject) {
         this.subject = subject;
@@ -21,12 +21,9 @@ public class Observer1 implements Observer {
     public void update(Observable o, Object arg) {
         if(o instanceof Subject){
             Subject subject = (Subject)o;
-           this.obejct =  subject.getObject();
-            display();
+            Object content = subject.getObject();
+            System.out.println("观察者2 收到主题消息："+ content);
         }
     }
 
-    private void display() {
-        System.out.println("观察者1 收到主题消息："+ obejct );
-    }
 }

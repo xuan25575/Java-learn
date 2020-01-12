@@ -1,8 +1,7 @@
 package cn.ccu.stream;
 
-import cn.ccu.stream.test.Transaction;
-import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -17,11 +16,11 @@ public class ReduceTest {
         System.out.println(lengthSum);
 
 
-        Optional<Integer> max = Lists.newArrayList(1,22,4,5,6).stream()
-                .reduce(Integer::max);
-        if(max.isPresent()){
-            System.out.println(max.get());
-        }
+//        Optional<Integer> max = new ArrayList(1,22,4,5,6).stream()
+//                .reduce(Integer::max);
+//        if(max.isPresent()){
+//            System.out.println(max.get());
+//        }
 
     }
 
