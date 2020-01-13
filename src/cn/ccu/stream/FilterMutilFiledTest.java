@@ -23,16 +23,20 @@ public class FilterMutilFiledTest {
         list.add(new Person("Tem", 17, "America"));
 
 
+//        List<Person> people = mutilFieldGroup(list);
+//        System.out.println(people);
+
         ArrayList<Person> collect = list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(
                 () -> new TreeSet<>(Comparator.comparing(o -> o.getName() + "#" + o.getAge() + "#" + o.getAddress()))),
                 ArrayList::new));
 
         collect.forEach(person -> System.out.println(person.toString()));
         System.out.println("==========================");
-        List<Person> collect1 = list.stream()
-                .sorted(Comparator.comparing(o -> o.getName() + "#" + o.getAge() + "#" + o.getAddress()))
-                .collect(Collectors.toList());
-        collect1.forEach(person -> System.out.println(person.toString()));
+
+//        List<Person> collect1 = list.stream()
+//                .sorted(Comparator.comparing(o -> o.getName() + "#" + o.getAge() + "#" + o.getAddress()))
+//                .collect(Collectors.toList());
+//        collect1.forEach(person -> System.out.println(person.toString()));
     }
 
     /**
@@ -40,7 +44,7 @@ public class FilterMutilFiledTest {
      * 所谓多字段分组 【就是 多个字段连接到一起（成为一个字符串） 然后通过该字符串来分组。】
      * @param records
      */
-    private void mutilFieldGroup(List<Person> records){
+    private static List<Person> mutilFieldGroup(List<Person> records){
         // 分组统计
         Map<String, Long> countMap = records.stream().collect(Collectors.groupingBy(o -> o.getName() + "_" + o.getAddress(), Collectors.counting()));
         List<Person> countRecords = countMap.keySet().stream().map(key -> {
@@ -60,6 +64,8 @@ public class FilterMutilFiledTest {
             record.setAge(countMap.get(key).intValue()); // 统计的数
             return record;
         }).collect(Collectors.toList());
+
+        return countRecords;
     }
 
     /**

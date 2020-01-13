@@ -1,4 +1,4 @@
-package cn.ccu.net;
+package cn.ccu.io;
 
 import java.io.*;
 

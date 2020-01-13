@@ -1,13 +1,16 @@
 package cn.ccu.paths;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFileAttributes;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @Description TODO
@@ -62,6 +65,10 @@ public class FilesDemo {
         posixPermissions.add(PosixFilePermission.OWNER_WRITE);
 
         Files.setPosixFilePermissions(profile, posixPermissions);    // 设置文件的权限
+
+
+        // 读文件
+        List<String> collect = Files.lines(Paths.get("D:\\jd.txt"), StandardCharsets.UTF_8).collect(Collectors.toList());
     }
 
 }

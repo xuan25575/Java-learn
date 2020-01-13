@@ -29,6 +29,11 @@ public class Test02 {
         Duration duration = Duration.between(localTime, localTime2);
         System.out.println(duration);
         System.out.println(duration.getUnits());
+
+
+        SimpleDateFormat format = new SimpleDateFormat("yyMM");
+        String dateStr = format.format(new Date());
+        System.out.println(dateStr);
     }
 
     public static String cnToDate(String dateString){
