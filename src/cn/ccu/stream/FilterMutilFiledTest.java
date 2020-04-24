@@ -1,5 +1,7 @@
 package cn.ccu.stream;
 
+import cn.ccu.stream.domain.Person;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;

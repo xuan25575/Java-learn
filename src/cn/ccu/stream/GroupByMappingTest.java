@@ -1,5 +1,7 @@
 package cn.ccu.stream;
 
+import cn.ccu.stream.domain.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

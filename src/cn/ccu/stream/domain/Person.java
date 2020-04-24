@@ -1,4 +1,4 @@
-package cn.ccu.stream;
+package cn.ccu.stream.domain;
 
 public class Person {
 

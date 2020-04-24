@@ -1,5 +1,7 @@
 package cn.ccu.stream;
 
+import cn.ccu.stream.domain.Person;
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,6 +15,7 @@ public class ListToMap {
     }
 
 
+    //有时候，希望得到的map的值不是对象，而是对象的某个属性，那么可以用下面的方式：
     public Map<Long, String> getIdNameMap(List<Person>  personList) {
         return personList.stream().collect(Collectors.toMap(Person::getId, Person::getName));
     }
