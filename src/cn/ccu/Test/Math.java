@@ -20,11 +20,19 @@ public class Math {
         System.out.println(s+"_"+date);
 
 
+        System.out.println(File.separatorChar);
+
+
+
 
 
 //         int a =1;
 //         int b =2;
 //         int c = (a+b)*10;
+
+
+
+
     }
     public  static  int math(int a,int b){
         return (a+b)/10;

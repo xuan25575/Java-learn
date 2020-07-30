@@ -12,5 +12,9 @@ public class RegexString {
 //        boolean matches2 = "11/62".matches("1+([/.]\\d+)?");
         System.out.println(matches);
         //System.out.println(matches2);
+
+        String s1 = "1";
+        String s2 = "1";
+        System.out.println(s1.intern()== s2.intern());
     }
 }
