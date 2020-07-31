@@ -8,7 +8,28 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ *         1.一般对象去重，
+ *         2.  还有 通过treeSet 去重。
+ *             重写一个通过id的比较器。 将所有对象加入进去。该集合就去重了。
+ *
+ *         List<TemplateShippingExportGoodsContainerAddrVo>  removalDuplicatedAddrList = Lists.newArrayList();
+ *         List<Integer> containerIdList  = addressList.stream()
+ *                                             .map(item -> item.getContainerId())
+ *                                             .distinct()
+ *                                            .collect(toList());
+ *         for (Integer containerId : containerIdList) {
+ *             // 如果里面有重复的 只取一条。
+ *            for (TemplateShippingExportGoodsContainerAddrVo addrVo : addressList) {
+ *                if(addrVo.getContainerId().equals(containerId)){
+ *                    removalDuplicatedAddrList.add(addrVo);
+ *                     break;
+ *                 }
+ *             }
+ *        }
+ */
 public class FilterMutilFiledTest {
+
 
     public static void main(String[] args) {
         List<Person> list = new ArrayList<>();
